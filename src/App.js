@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Form from './Form.js'; 
+import Display from './Display.js'; 
+
+let contracts_temp = []; 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: "", 
-        company: "", 
-        contract: "" 
+      contracts: [] 
   }
 }
 
-onClick() {
+updateField(newValue ) {
+  contracts_temp.push([newValue.name,newValue.company, newValue.contract ])
+  console.log(contracts_temp)
   this.setState({
-    [event.target.id] : event.target.value
-})
+      contracts: contracts_temp
+  }
+  )
 }
 
   render() {
+    console.log(this.state.contracts)
     return (
       <div className="App">
         <Form
-        onClick = {this.onClick}
+        updateParent  = {newValue => this.updateField(newValue)}
+        /> 
+        <Display
+        contracts = {this.state.contracts}
         /> 
       </div>
     );

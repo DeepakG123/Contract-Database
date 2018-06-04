@@ -25,9 +25,9 @@ class Form extends Component {
         console.log(this.state); 
       return (
         <div>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="primary">
         <Toolbar>
-          <Typography variant="title" color="blue">
+          <Typography variant="title" color="inherit">
             Contract Database
           </Typography>
         </Toolbar>
@@ -59,7 +59,9 @@ class Form extends Component {
         <Button 
         variant="raised" 
         color="primary"
-        onClick = {this.props.onClick} 
+        onClick = {
+            e => this.props.updateParent(this.state)
+            } 
         >
         Submit
       </Button>
